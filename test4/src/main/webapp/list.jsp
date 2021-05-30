@@ -29,7 +29,7 @@
 <body>
 <table>
 	<tr>
-		<th class="num">번호</th>
+		<th class="productid">상품번호</th>
 		<th class="title">제목</th>
 		<th class="id">작성자</th>
 		<th class="regtime">작성일</th>
@@ -44,18 +44,19 @@
 	try(
 	Connection con=DriverManager.getConnection(url,user,passwd);
 	Statement stmt=con.createStatement();
-	ResultSet rs=stmt.executeQuery("select * from board order by num desc");){
+	ResultSet rs=stmt.executeQuery("select * from board");){
 	while(rs.next()){
 %>
 	<tr>
 	 	<td><%=rs.getInt("num")%></td>
-	 	<td style="text-align: left;">`
+	 	<td style="text-align: left;">
 	 		<a href="view.jsp?num=<%=rs.getInt("num") %>">
 	 			<%=rs.getString("title") %>
 	 		</a>
-	 	<td><%=rs.getString("id") %></td>
+	 	</td>
+	 	<td><%=rs.getString("memberid") %></td>
 	 	<td><%=rs.getString("regtime") %></td>
-	 	<td><%=rs.getString("hits") %></td>	
+	 	<td><%=rs.getString("productid") %></td>	
 	 </tr>
 <%}
 	}catch(Exception e){

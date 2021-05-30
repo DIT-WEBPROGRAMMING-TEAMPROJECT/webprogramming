@@ -5,7 +5,7 @@
 <%@page import="java.time.*" %>
 <%
 	request.setCharacterEncoding("utf-8");
-	String writer=request.getParameter("id");
+	String writer=request.getParameter("memberid");
 	String title=request.getParameter("title");
 	String content=request.getParameter("content");
 	
@@ -28,7 +28,7 @@
 	){
 		String curTime=LocalDate.now()+" "+LocalTime.now().toString().substring(0,8);
 		
-		stmt.executeUpdate(String.format("insert into board"+"(id, title, content,regtime,hits)"+"values('%s','%s','%s','%s',0)",writer,title,content,curTime));
+		stmt.executeUpdate(String.format("insert into board"+"(memberid,prouductid,title, content,regtime)"+"values('%s',0,'%s','%s',0)",writer,title,content,curTime));
 	}catch(Exception e){
 		e.printStackTrace();
 	}
