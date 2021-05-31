@@ -43,3 +43,7 @@ create table basket ( -- 장바구니 아직 안함
 drop table member; -- MEMBER table 삭제
 drop table productinfo; -- productinfo table 삭제
 drop table board; -- 후기게시판 table 삭제
+
+-- BOARD 테이블 Test용    
+insert into board values ('as', 1, 1, 'title', sysdate, 'content');
+select to_char(regtime, 'yy/mm/dd hh24:mi') from board;
