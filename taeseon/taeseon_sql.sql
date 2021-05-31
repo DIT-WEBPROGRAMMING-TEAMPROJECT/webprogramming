@@ -1,19 +1,19 @@
 create table member ( -- 회원정보
     id nvarchar2(20) constraint PK_MEMBER_ID PRIMARY KEY, -- 기본키 PK_테이블명_pk인 컬럼명
-    pwd nvarchar2(20),
-    name nvarchar2(10),
-    email nvarchar2(30),
-    address nvarchar2(50),
+    pwd nvarchar2(20) NOT NULL,
+    name nvarchar2(10) NOT NULL,
+    email nvarchar2(30) NOT NULL,
+    address nvarchar2(50) NOT NULL,
     admin int);
 
 create table productinfo ( -- 상품정보 테이블
     productId NUMBER constraint PK_PRODUCTINFO_PRODUCTID PRIMARY KEY, --pk
-    productCode NUMBER,
-    name NVARCHAR2(30),
-    info NVARCHAR2(200),
-    detailedLink NVARCHAR2(100),
-    thumbnailLink NVARCHAR2(100),
-    price NUMBER,
+    productCode NUMBER NOT NULL,
+    name NVARCHAR2(30) NOT NULL,
+    info NVARCHAR2(200) NOT NULL,
+    detailedLink NVARCHAR2(100) NOT NULL,
+    thumbnailLink NVARCHAR2(100) NOT NULL,
+    price NUMBER NOT NULL,
     stock NUMBER
 );
 
@@ -21,9 +21,9 @@ create table board ( -- 후기게시판
     memberId NVARCHAR2(20),
     productId NUMBER,
     boardID NUMBER constraint PK_BOARD_BOARDID PRIMARY KEY,
-    title NVARCHAR2(60),
-    regtime date,
-    content NVARCHAR2(100),
+    title NVARCHAR2(60) NOT NULL,
+    regtime date NOT NULL,
+    content NVARCHAR2(100) NOT NULL,
     -- 외래키 지정
     constraint FK_MEMBER_BOARD_MEMBERID FOREIGN KEY(memberId)
         REFERENCES MEMBER(id) ON DELETE CASCADE,
